@@ -1,5 +1,5 @@
 <template>
-
+  <h1>Homepage - strona logowania</h1>
 </template>
 
 <script>

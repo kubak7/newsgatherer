@@ -1,10 +1,10 @@
 <template>
-$END$
+  <p>logowanie</p>
 </template>
 
 <script>
 export default {
-name: "Login"
+  name: "Login"
 }
 </script>
 
