@@ -1,10 +1,15 @@
 <template>
-  <h1>Homepage - strona logowania</h1>
+  <div class="root d-flex">
+    <h1>Strona domowa</h1>
+    <News></News>
+  </div>
 </template>
 
 <script>
+import News from "@/components/News";
 export default {
-  name: "Home"
+  name: "Home",
+  components: {News}
 }
 </script>
 
