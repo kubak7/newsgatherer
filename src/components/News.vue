@@ -168,22 +168,59 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 
 export default {
   name: "News",
   data() {
     return {
       info: null,
+      titles: [],
+      descriptions: [],
+      authors: [],
+      sourceUrls: [],
+      imageUrls: [],
+
     }
   },
-  created(){
-    axios.get('https://newsapi.org/v2/top-headlines?country=pl&apiKey=862e7350bffe42ffb5e5928951899018')
-        .then(response => this.info = response.data)
-        .catch(error => {
-          this.errorMessage("There was en error!", error);
-        });
-  }
+  created() {
+    var infoTitles = [];
+    var infoDescriptions = [];
+    var infoAuthors = [];
+    var infoUrls = [];
+    var infoImageUrl = [];
+
+    const url = 'https://newsapi.org/v2/top-headlines?country=pl' +
+        '&apiKey=15df16e7b6ef4578afc917f47115ab6f';
+
+
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+
+          this.info = data;
+          for(const val of data.articles){
+            infoTitles.push(val.title);
+            infoDescriptions.push(val.description);
+            infoAuthors.push(val.author);
+            infoUrls.push(val.url);
+            infoImageUrl.push(val.urlToImage);
+          }
+          this.titles = infoTitles;
+          this.descriptions = infoDescriptions;
+          this.authors = infoAuthors;
+          this.sourceUrls = infoUrls;
+          this.imageUrls = infoImageUrl;
+
+        })
+    //axios.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=15df16e7b6ef4578afc917f47115ab6f')
+    //    .then(response => this.info = response.data)
+    //    .catch(error => {
+    //      this.errorMessage("There was en error!", error);
+    //    });
+  },
+
+
 
 }
 
