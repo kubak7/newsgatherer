@@ -1,5 +1,5 @@
 <template>
-  <div class='app'>
+  <v-content>
     <v-flex d-flex>
       <v-layout wrap>
         <v-card v-for="item in info.articles" :key="item" class="mx-auto my-12 pa-2" max-width="374">
@@ -20,8 +20,9 @@
             </v-row>
             <br>
             <div> {{ item.description }}</div>
+            <div> {{ item.author }}</div>
           </v-card-text>
-          <a v-bind="item.url">
+           <a v-bind:href="item.url">
             <v-btn
                 color="deep-purple lighten-2"
                 text
@@ -35,7 +36,7 @@
       </v-layout>
     </v-flex>
 
-  </div>
+  </v-content>
 </template>
 
 <script>

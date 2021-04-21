@@ -23,22 +23,30 @@ import firebase from 'firebase';
 export default {
     name: 'GoogleLogin',
 
-    created() {
-        const email = '';
-        const password = '';
-        const Login = () => {
-            firebase
-                .auth()
-                .signInWithEmailAndPassword(email.value, password.value)
-                .then(data => console.log(data))
-                .catch(err => alert(err.message));
-        };
-        return {
-            Login,
-            email,
-            password,
-        };
+  methods: {
+    login() {
+      firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then(() => {
+            alert('Successfully logged in');
+            this.$router.push('/home');
+          })
+          .catch(error => {
+            alert(error.message);
+          });
     },
+    socialLogin() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(() => {
+        alert('Successfully logged in');
+        this.$router.push('/home');
+      })
+          .catch(error => {
+            alert(error.message);
+          });
+    }
+  },
 };
 </script>
 
