@@ -1,12 +1,12 @@
 <template>
-  <div class="root d-flex"><p>Ulubione</p></div>
+    <div class='root d-flex'><p>Ulubione</p></div>
 
 </template>
 
 <script>
 export default {
-  name: "Favourites"
-}
+    name: 'Favourites',
+};
 </script>
 
 <style scoped>
