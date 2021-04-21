@@ -1,6 +1,5 @@
 <template>
     <div class='root d-flex'><p>Ulubione</p></div>
-
 </template>
 
 <script>

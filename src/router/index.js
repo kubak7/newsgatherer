@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Register from '@/views/Register';
 import Login from '@/views/Login';
 import Home from '../views/Home';
+import Main from '../views/Main';
 import Favourites from '../views/Favourites';
 import axios from 'vue-axios';
 import VueAxios from 'vue-axios';
@@ -23,12 +24,17 @@ const routes = [
         component: Login,
     },
     {
-        path: '/home',
-        name: 'Home',
-        component: Home,
+        path: '/main',
+        name: 'Main',
+        component: Main,
         meta: {
             authRequired: true,
         },
+    },
+    {
+        path: '/home',
+        name: 'Home',
+        component: Home,
     },
     {
         path: '/favourite',

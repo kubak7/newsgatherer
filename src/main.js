@@ -5,9 +5,11 @@ import News from './components/News.vue';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import firebase from 'firebase/app';
+import vuetify from './plugins/vuetify';
 
 
-Vue.component(News);
+
+Vue.component("News", News);
 
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
@@ -15,7 +17,8 @@ Vue.config.productionTip = false;
 new Vue({
     router,
     mode: 'hash',
-    render: h => h(App),
+    vuetify,
+    render: h => h(App)
 }).$mount('#app');
 
 const firebaseConfig = {

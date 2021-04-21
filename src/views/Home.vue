@@ -1,15 +1,15 @@
 <template>
-    <div class='root d-flex'>
-        <News></News>
+    <div class='app'>
+      <News></News>
     </div>
 </template>
 
 <script>
-import News from '@/components/News';
+
 
 export default {
     name: 'Home',
-    components: { News },
+
 };
 </script>
 
