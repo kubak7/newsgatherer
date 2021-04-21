@@ -19,6 +19,10 @@ const routes = [
         component: Register,
     },
     {
+        path:'/',
+        redirect: 'login'
+    },
+    {
         path: '/login',
         name: 'login',
         component: Login,
@@ -27,14 +31,14 @@ const routes = [
         path: '/main',
         name: 'Main',
         component: Main,
-        meta: {
-            authRequired: true,
-        },
     },
     {
         path: '/home',
         name: 'Home',
         component: Home,
+        meta: {
+            authRequired: true,
+        },
     },
     {
         path: '/favourite',
