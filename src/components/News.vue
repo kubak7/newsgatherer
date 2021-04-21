@@ -30,6 +30,16 @@
               Zobacz
             </v-btn>
           </a>
+          <v-btn @click="addToFavourite"
+              depressed
+              elevation="2"
+              fab
+              icon
+              raised
+              rounded
+              left
+
+          ><v-icon>mdi-plus</v-icon></v-btn>
 
 
         </v-card>
@@ -92,6 +102,11 @@ export default {
         //      this.errorMessage("There was en error!", error);
         //    });
     },
+  methods:{
+      addToFavourite(){
+
+      }
+  }
 
 
 };
