@@ -1,6 +1,7 @@
 <template>
   <div class="root d-flex">
-    <h1>Strona domowa</h1>
+    <router-link to="/">Home</router-link>|
+    <router-link to="/profil">Profil</router-link>|
     <News></News>
   </div>
 </template>

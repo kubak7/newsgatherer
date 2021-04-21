@@ -1,10 +1,11 @@
 <template>
-  <p>ustawienia</p>
+  <div class="root d-flex"><p>Ulubione</p></div>
+
 </template>
 
 <script>
 export default {
-  name: "Settings"
+  name: "Favourites"
 }
 </script>
 

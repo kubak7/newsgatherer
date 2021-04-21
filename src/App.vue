@@ -11,8 +11,7 @@
 
 <script>
 import './assets/css/nicepage.css'
-import "./assets/js/nicepage.js";
-import "./assets/js/jquery.js";
+
 
 export default {
   name: 'App',
