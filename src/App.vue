@@ -4,7 +4,7 @@
          <v-btn to="/login">Login</v-btn>
          <v-btn to="/register">Register</v-btn>
          <v-btn to="/home">Home</v-btn>
-         <v-btn type="submit" @click="logout"></v-btn>
+         <v-btn type="submit" @click="logout">Logout</v-btn>
     </v-app-bar>
     <br>
     <br>
@@ -19,6 +19,7 @@
 
 
 import firebase from 'firebase';
+
 export default {
   name: 'App',
   methods: {
@@ -38,3 +39,7 @@ export default {
   },
 };
 </script>
+
+<style>
+
+</style>

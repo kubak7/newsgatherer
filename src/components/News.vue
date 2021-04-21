@@ -1,46 +1,40 @@
 <template>
   <div class='app'>
-    <v-container class="grey lighten-5">
-      <v-row no-gutters>
-        <v-col
-            v-for="n in 3"
-            :key="n"
-            cols="12"
-            sm="4"
-        >
-          <v-card v-for="item in info.articles" :key="item" class="mx-auto my-12 pa-2" max-width="374">
-            <template slot="progress">
-              <v-progress-linear
-                  color="deep-purple"
-                  height="10"
-                  indeterminate
-              ></v-progress-linear>
-            </template>
-            <v-img v-bind:src="item.urlToImage"></v-img>
-            <v-card-title> {{ item.title }}</v-card-title>
-            <v-card-text>
-              <v-row
-                  align="center"
-                  class="mx-0"
-              >
-              </v-row>
-              <br>
-              <div> {{ item.description }}</div>
-            </v-card-text>
-            <a v-bind="item.url">
-              <v-btn
-                  color="deep-purple lighten-2"
-                  text
-              >
-                Zobacz
-              </v-btn>
-            </a>
+    <v-flex d-flex>
+      <v-layout wrap>
+        <v-card v-for="item in info.articles" :key="item" class="mx-auto my-12 pa-2" max-width="374">
+          <template slot="progress">
+            <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+            ></v-progress-linear>
+          </template>
+          <v-img v-bind:src="item.urlToImage"></v-img>
+          <v-card-title> {{ item.title }}</v-card-title>
+          <v-card-text>
+            <v-row
+                align="center"
+                class="mx-0"
+            >
+            </v-row>
+            <br>
+            <div> {{ item.description }}</div>
+          </v-card-text>
+          <a v-bind="item.url">
+            <v-btn
+                color="deep-purple lighten-2"
+                text
+            >
+              Zobacz
+            </v-btn>
+          </a>
 
 
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+        </v-card>
+      </v-layout>
+    </v-flex>
+
   </div>
 </template>
 
