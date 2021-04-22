@@ -51,15 +51,36 @@
 
 <script>
 import db from '../components/FirebaseInit';
+import firebase from "firebase";
 export default {
     name: 'Favourites',
   data() {
     return {
+      email:null,
+      user_id:null,
       fav:[],
     }
   },
   created() {
-    db.collection('Favourites').get().then(querySnapshot =>{
+    const user = firebase.auth().currentUser;
+
+    if(user){
+      db.collection('Users').get().then(querySnapshot =>{
+        querySnapshot.forEach(doc =>{
+          this.email= doc.data().email
+        })
+      })
+      db.collection('Users').where('email','==',this.email).get().then((snaphot) => {
+        snaphot.forEach(doc =>{
+          this.user_id = doc.id;
+          console.log(this.user_id);
+        })
+      })
+
+
+    }
+
+    db.collection('Users').doc(this.user_id).collection('Favourites').get().then(querySnapshot =>{
       querySnapshot.forEach(doc =>{
         const data = {
           'id':doc.data().id,
@@ -78,7 +99,10 @@ export default {
       if(confirm('Are you sure?')){
         //db.collection('Favourites').where('id','==',this.fav[i].id).delete();
 
-        var ref = db.collection('Favourites').where('id','==',this.fav[i].id);
+        const ref = db.collection('Users')
+            .doc(this.user_id).collection('Favourites')
+            .where('id','==',this.fav[i].id);
+
         ref.get().then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
             doc.ref.delete();
@@ -87,7 +111,8 @@ export default {
       }
 
     }
-  }
+
+    }
 
 };
 </script>

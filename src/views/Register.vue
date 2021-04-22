@@ -44,6 +44,7 @@
 
 <script>
 import firebase from 'firebase';
+import db from '../components/FirebaseInit';
 
 export default {
     name: 'Register',
@@ -54,7 +55,19 @@ export default {
         };
     },
     methods: {
-        register() {
+      newUser(){
+        db.collection('Users').add({
+          email: this.email,
+        })
+            .then(docRef =>{
+              console.log("Document written with ID: ", docRef.id);
+              //alert("dodano do db");
+            }).catch((error) => {
+          console.log("Error: ", error);
+          alert("error");
+        });
+      },
+      register() {
             firebase
                 .auth()
                 .createUserWithEmailAndPassword(this.email, this.password)
@@ -65,6 +78,7 @@ export default {
                 .catch(error => {
                     alert(error.message);
                 });
+            this.newUser();
         },
       socialLogin() {
         const provider = new firebase.auth.GoogleAuthProvider();
