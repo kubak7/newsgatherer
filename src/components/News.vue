@@ -110,19 +110,15 @@ export default {
       addToFavourite(i){
         var user = firebase.auth().currentUser;
 
-
-
         if(user){
-          db.collection('Users').get().then(querySnapshot =>{
-            querySnapshot.forEach(doc =>{
-              this.email= doc.data().email
-            })
-          })
+          this.email=user.email;
+
           db.collection('Users').where('email','==',this.email).get().then((snaphot) => {
             snaphot.forEach(doc =>{
               this.user_id = doc.id;
             })
           })
+
 
           db.collection('Users').doc(this.user_id).collection('Favourites').add({
             id:(Math.floor(Math.random() * 1000000) + 1),
