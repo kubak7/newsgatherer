@@ -22,24 +22,30 @@
             <div> {{ fav.description }}</div>
             <div> {{ fav.author }}</div>
           </v-card-text>
-          <a v-bind:href="fav.url">
-            <v-btn
-                color="deep-purple lighten-2"
-                text
-            >
-              Zobacz
-            </v-btn>
-          </a>
-          <v-btn @click="deleteFromDB(index)"
-                 depressed
-                 elevation="2"
-                 fab
-                 icon
-                 raised
-                 rounded
-                 right
+          <v-card-text>
+            <a v-bind:href="fav.url">
+              <v-btn
+                  color="deep-purple lighten-2"
+                  text
+                  absolute
+                  bottom
+                  left
+              >
+                Zobacz
+              </v-btn>
+            </a>
+            <v-btn @click="deleteFromDB(index)"
+                   depressed
+                   elevation="2"
 
-          ><v-icon>mdi-delete</v-icon></v-btn>
+                   icon
+                   raised
+                   rounded
+                   absolute
+                   bottom
+                   right
+            ><v-icon>mdi-delete</v-icon></v-btn>
+          </v-card-text>
 
 
         </v-card>

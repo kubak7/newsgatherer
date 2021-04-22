@@ -22,24 +22,31 @@
             <div> {{ item.description }}</div>
             <div> {{ item.author }}</div>
           </v-card-text>
-          <a v-bind:href="item.url">
-            <v-btn
-                color="deep-purple lighten-2"
-                text
-            >
-              Zobacz
-            </v-btn>
-          </a>
-          <v-btn @click="addToFavourite(index)"
-                 depressed
-                 elevation="2"
-                 fab
-                 icon
-                 raised
-                 rounded
-                 left
+          <v-card-text>
+            <a class="posi" v-bind:href="item.url">
+              <v-btn
+                  color="deep-purple lighten-2"
+                  text
+                  absolute
+                  bottom
+                  right
+              >
+                Zobacz
+              </v-btn>
+            </a>
+            <v-btn style="z-index: 2" @click="addToFavourite(index)"
+                   depressed
+                   elevation="2"
+                   color="primary"
+                   rounded
+                   absolute
+                   bottom
+                   left
 
-          ><v-icon>mdi-plus</v-icon></v-btn>
+
+            > <v-icon dark>mdi-heart</v-icon>
+            </v-btn>
+          </v-card-text>
 
 
         </v-card>
