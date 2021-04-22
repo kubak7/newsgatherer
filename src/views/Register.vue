@@ -23,6 +23,10 @@
                       type="password"
                       v-model="password"
                   ></v-text-field>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn class="sx-4" @click="socialLogin">Login with Google</v-btn>
+                  </v-card-actions>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -62,6 +66,16 @@ export default {
                     alert(error.message);
                 });
         },
+      socialLogin() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(() => {
+          alert('Successfully logged in');
+          this.$router.push('/home');
+        })
+            .catch(error => {
+              alert(error.message);
+            });
+      }
     },
 };
 </script>

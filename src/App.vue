@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-         <v-btn v-if= "!isLoggedIn" class="mx-4" to="/login">Login</v-btn>
+         <v-btn v-if= "!isLoggedIn" class="mx-4" to="/">Login</v-btn>
          <v-btn class="sx-4" to="/register">Register</v-btn>
           <v-btn class="sx-4" to="/home">Home</v-btn>
       <v-btn  class="sx-4" to="/favourites">Favourites</v-btn>
-         <v-btn v-if= "isLoggedIn" class="sx-4" type="submit" @click="logout">Logout</v-btn>
+         <v-btn v-if= "!isLoggedIn" class="sx-4" type="submit" @click="logout">Logout</v-btn>
     </v-app-bar>
 
     <router-view></router-view>

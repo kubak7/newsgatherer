@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 import Register from '@/views/Register';
 import Login from '@/views/Login';
 import Home from '../views/Home';
-import Main from '../views/Main';
 import Favourites from '../views/Favourites';
 import axios from 'vue-axios';
 import VueAxios from 'vue-axios';
@@ -19,18 +18,9 @@ const routes = [
         component: Register,
     },
     {
-        path:'/',
-        redirect: 'login'
-    },
-    {
-        path: '/login',
+        path: '/',
         name: 'login',
         component: Login,
-    },
-    {
-        path: '/main',
-        name: 'Main',
-        component: Main,
     },
     {
         path: '/home',
