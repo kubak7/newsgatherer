@@ -23,7 +23,7 @@
             <div> {{ item.author }}</div>
           </v-card-text>
           <v-card-text>
-            <a class="posi" v-bind:href="item.url">
+            <a class="posi" v-bind:href="item.url" target="_blank">
               <v-btn
                   color="deep-purple lighten-2"
                   text

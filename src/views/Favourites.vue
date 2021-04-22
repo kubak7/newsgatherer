@@ -23,7 +23,7 @@
             <div> {{ fav.author }}</div>
           </v-card-text>
           <v-card-text>
-            <a v-bind:href="fav.url">
+            <a v-bind:href="fav.url" target="_blank">
               <v-btn
                   color="deep-purple lighten-2"
                   text
