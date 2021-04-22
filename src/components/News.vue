@@ -53,11 +53,14 @@
 //import axios from 'axios';
 //import '../assets/css/głowna-zalogowane.css';
 import db from '../components/FirebaseInit';
+import firebase from 'firebase';
 
 export default {
     name: 'News',
     data() {
         return {
+          user_id:null,
+          email:null,
             info: null,
             titles: [],
             descriptions: [],
@@ -105,21 +108,41 @@ export default {
     },
   methods:{
       addToFavourite(i){
-        db.collection('Favourites').add({
-          id:(Math.floor(Math.random() * 1000000) + 1),
-          title: this.titles[i],
-          description: this.descriptions[i],
-          author: this.authors[i],
-          url:this.sourceUrls[i],
-          urlToImg:this.imageUrls[i],
-        })
-            .then(docRef =>{
-              console.log("Document written with ID: ", docRef.id);
-              alert("dodano do ulubionych");
-            }).catch((error) => {
-          console.log("Error: ", error);
-          alert("error");
-        });
+        var user = firebase.auth().currentUser;
+
+
+
+        if(user){
+          db.collection('Users').get().then(querySnapshot =>{
+            querySnapshot.forEach(doc =>{
+              this.email= doc.data().email
+            })
+          })
+          db.collection('Users').where('email','==',this.email).get().then((snaphot) => {
+            snaphot.forEach(doc =>{
+              this.user_id = doc.id;
+            })
+          })
+
+          db.collection('Users').doc(this.user_id).collection('Favourites').add({
+            id:(Math.floor(Math.random() * 1000000) + 1),
+            title: this.titles[i],
+            description: this.descriptions[i],
+            author: this.authors[i],
+            url:this.sourceUrls[i],
+            urlToImg:this.imageUrls[i],
+          })
+              .then(docRef =>{
+                console.log("Document written with ID: ", docRef.id);
+                alert("dodano do ulubionych");
+              }).catch((error) => {
+            console.log("Error: ", error);
+            alert("error");
+          });
+        }
+
+
+
       }
   }
 

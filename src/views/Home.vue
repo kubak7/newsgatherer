@@ -7,8 +7,13 @@
 <script>
 
 
+import News from "@/components/News";
+
 export default {
     name: 'Home',
+  components:{
+    News,
+  }
 
 };
 </script>
