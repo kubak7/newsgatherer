@@ -2,7 +2,7 @@
   <v-content>
     <v-flex d-flex>
       <v-layout wrap>
-        <v-card v-for="(item, index) in info.articles" :key="item" class="mx-auto my-12 pa-2" max-width="374">
+        <v-card v-for="(item, index) in info.news" :key="item" class="mx-auto my-12 pa-2" max-width="374">
           <template slot="progress">
             <v-progress-linear
                 color="deep-purple"
@@ -10,7 +10,7 @@
                 indeterminate
             ></v-progress-linear>
           </template>
-          <v-img v-bind:src="item.urlToImage"></v-img>
+          <v-img v-bind:src="item.image || './assets/default-image.jpg'"></v-img>
           <v-card-title> {{ item.title }}</v-card-title>
           <v-card-text>
             <v-row
@@ -70,6 +70,8 @@ export default {
       authors: [],
       sourceUrls: [],
       imageUrls: [],
+      imageError: false,
+      defaultImage: require("../assets/default-image.jpg")
     };
   },
   created() {
@@ -78,18 +80,20 @@ export default {
     var infoAuthors = [];
     var infoUrls = [];
     var infoImageUrl = [];
-    const url = 'https://newsapi.org/v2/top-headlines?country=pl' +
-        '&apiKey=15df16e7b6ef4578afc917f47115ab6f';
+
+    const url = 'https://api.currentsapi.services/v1/latest-news?language=pl&apiKey=FLp4AoHB8wCEqcKYQrQ1gR8JVdg_RdgoDxB6U-bcM8V2J5PU';
+
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
           this.info = data;
-          for (const val of data.articles) {
+          console.log(data.news);
+          for (const val of data.news) {
             infoTitles.push(val.title);
             infoDescriptions.push(val.description);
             infoAuthors.push(val.author);
             infoUrls.push(val.url);
-            infoImageUrl.push(val.urlToImage);
+            infoImageUrl.push(val.image);
           }
           this.titles = infoTitles;
           this.descriptions = infoDescriptions;
@@ -102,6 +106,11 @@ export default {
     //    .catch(error => {
     //      this.errorMessage("There was en error!", error);
     //    });
+  },
+  computed:{
+    creatorImage() {
+      return this.imageError ? this.defaultImage : "creator-image.jpg"
+    }
   },
   methods:{
     addToFavourite(i){
